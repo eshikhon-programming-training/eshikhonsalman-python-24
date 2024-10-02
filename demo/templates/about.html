@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'assets/css/about.css' %}">
+</head>
+
+<body>
+    <h1>About Information Entry</h1>
+    <form action="{% url 'about_insert' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="">Name</label>
+        <input type="text" name="fname"><br><br>
+        <label for="">Description</label>
+        <input type="text" name="desc"><br><br>
+        <label for="">fb</label>
+        <input type="text" name="fb"><br><br>
+        <label for="">git</label>
+        <input type="text" name="git"><br><br>
+        <label for="">phone</label>
+        <input type="text" name="phone"><br><br>
+        <label for="">Email</label>
+        <input type="text" name="email"><br><br>
+        <label for="">Image</label>
+        <input type="file" name="img"><br><br>
+        <input type="submit" name="email"><br><br>
+    </form>
+
+    <h2>HTML Table</h2>
+
+    <table>
+        <tr>
+            <th>SL</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+        {% for i in about_d %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.description}}</td>
+            <td>{{i.phone}}</td>
+            <td><a href="{% url 'about_edit' i.id %} "> Edit </a><a href="{% url 'about_delete' i.id %} "> Delete </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

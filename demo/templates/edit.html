@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'assets/css/about.css' %}">
+</head>
+
+<body>
+    <h1>About Information Entry</h1>
+    <form action="{% url 'about_update' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="">Name</label>
+        <input type="text" name="fname" value="{{d.name}}"><br><br>
+        <input type="hidden" value="{{d.id}}" name="uid">
+        <label for="">Description</label>
+        <input type="text" name="desc" value="{{d.description}}"><br><br>
+        <label for="">fb</label>
+        <input type="text" name="fb" value="{{d.fb}}"><br><br>
+        <label for="">git</label>
+        <input type="text" name="git" value="{{d.git}}"><br><br>
+        <label for="">phone</label>
+        <input type="text" name="phone" value="{{d.phone}}"><br><br>
+        <label for="">Email</label>
+        <input type="text" name="email" value="{{d.email}}"><br><br>
+        <input type="submit" name="submit" value="Edit"><br><br>
+    </form>
+</body>
+
+</html>
