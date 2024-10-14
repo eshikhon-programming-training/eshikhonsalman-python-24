@@ -20,5 +20,5 @@ from . import views
 
 urlpatterns = [
     path('', views.catPageShow, name='catpageshow'),
-    path('insert/', views.catDemoInsert),
+    path('insert/', views.catDemoInsert, name='cat_insert'),
 ]
