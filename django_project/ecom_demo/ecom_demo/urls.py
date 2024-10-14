@@ -20,5 +20,5 @@ from django.urls import path,include
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('admin/cat/', include('category.urls')),
-    path('admin/cat_insert', include('category.urls')),
+    
 ]
