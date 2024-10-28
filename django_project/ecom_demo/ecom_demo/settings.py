@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'category',
     'home',
-    'subcat'
-    
+    'subcat',
+    'product'
 ]
 
 MIDDLEWARE = [
@@ -58,6 +58,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'ecom_demo.urls'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 TEMPLATES = [
     {

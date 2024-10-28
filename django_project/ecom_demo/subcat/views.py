@@ -8,7 +8,8 @@ from django.contrib import messages
 
 def subCatPageShow(req):
     all_cats = Categories.objects.all()
-    cats = {'cats':all_cats}
+    all_subcats = SubCategories.objects.prefetch_related('cat_id').all()
+    cats = {'cats':all_cats,'subcats':all_subcats}
     return render(req,'subcat/subcat.html',cats)
 
 def subcatDemoInsert(req):
