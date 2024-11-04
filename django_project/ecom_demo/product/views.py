@@ -17,6 +17,7 @@ def product_insert(req):
     prod_desc= req.POST.get('prod_Description')
     prod_act_price= req.POST.get('prod_act_price')
     prod_discount= req.POST.get('prod_discount')
+    prod_feature= req.POST.get('feature')
     prod_image= req.FILES.get('prod_image')
     sub_category_instance = get_object_or_404(SubCategories, id=sub_cat_id)
     product_obj = products()
@@ -26,5 +27,6 @@ def product_insert(req):
     product_obj.discount = prod_discount
     product_obj.image = prod_image
     product_obj.sub_cat_id = sub_category_instance
+    product_obj.is_featured = prod_feature
     product_obj.save()
     return redirect('productPageShow')

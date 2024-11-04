@@ -9,6 +9,7 @@ class products(models.Model):
     discount = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='images/')
     sub_cat_id = models.ForeignKey(SubCategories, related_name='products',on_delete=models.CASCADE)
+    is_featured = models.CharField(max_length = 100)
     
 
 # Create your models here.

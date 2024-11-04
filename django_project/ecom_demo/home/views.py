@@ -2,13 +2,20 @@ from django.shortcuts import render
 
 from category.models import *
 from subcat.models import *
-
+from product.models import *
 from django.db.models import Prefetch, Count
 
 # Create your views here.
 
 def homePageShow(req):
     all_cats_subcats = SubCategories.objects.prefetch_related('cat_id').all()
+    all_products = products.objects.all()
+
+    for i in all_products:
+        print(i.actual_price)
+        print(i.discount)
+        i.discount_price = i.actual_price - ((i.actual_price*i.discount)/100)
+        # print(discount_price)
     # for i in all_cats_subcats:
     #     print(i)
 
@@ -23,6 +30,6 @@ def homePageShow(req):
         for subcat in category.subcategories.all():
             print(f"  Subcategory: {subcat.name}")  # Adjust according to your subcategory field
 
-    cats = {'cats_subcats':categories}
+    cats = {'cats_subcats':categories,'prod':all_products}
 
     return render(req,'home/home.html',cats)
