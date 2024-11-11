@@ -11,6 +11,8 @@ def productPageShow(req):
     data = {'data':all_sub_cat}
     return render(req,'products/product.html',data)
 
+
+
 def product_insert(req):
     sub_cat_id = req.POST.get('sub_cat_name')
     prod_name = req.POST.get('prod_name')

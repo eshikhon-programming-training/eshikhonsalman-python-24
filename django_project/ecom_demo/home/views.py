@@ -33,3 +33,10 @@ def homePageShow(req):
     cats = {'cats_subcats':categories,'prod':all_products}
 
     return render(req,'home/home.html',cats)
+
+def product_details(req,id):
+    single_product = products.objects.get(id=id)
+    single_product.discount_price = single_product.actual_price - ((single_product.actual_price*single_product.discount)/100)
+    print(single_product.discount_price)
+    data = {'data':single_product}
+    return render(req,'products/detail.html',data)

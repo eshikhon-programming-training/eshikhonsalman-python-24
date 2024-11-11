@@ -20,5 +20,6 @@ from . import views
 
 urlpatterns = [
     path('', views.homePageShow, name='home_show'),
+    path('prod_details/<int:id>/', views.product_details, name='product_details'),
     # path('insert/', views.catDemoInsert, name='cat_insert'),
 ]
